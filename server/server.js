@@ -8,10 +8,14 @@ mysql = require('mysql');
 
 const app = express();
 
-const con = mysql.createConnection({
-  host: 'localhost',
-  user: 'user',
-  password: 'password',
+app.use(function(req, res, next){
+    global.con = mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: 'root',
+    });
+    con.connect();
+    next();    
 });
 
 // mongoose.Promise = global.Promise;
