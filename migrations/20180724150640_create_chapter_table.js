@@ -10,7 +10,7 @@ exports.up = function(knex, Promise) {
         t.text('content').notNullable()
         t.integer('views').nullable().defaultTo(0)
         t.timestamps()
-        t.timestamp('deleted_at')->nullable()
+        t.timestamp('deleted_at').nullable()
   	})
 };
 
