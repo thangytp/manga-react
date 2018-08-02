@@ -2,21 +2,20 @@ const express = require('express'),
 path = require('path'),
 bodyParser = require('body-parser'),
 cors = require('cors'),
-mongoose = require('mongoose'),
 config = require('./config/DB'),
 mysql = require('mysql');
 
 const app = express();
 
-app.use(function(req, res, next){
-    global.con = mysql.createConnection({
-      host: 'localhost',
-      user: 'root',
-      password: 'root',
-    });
-    con.connect();
-    next();    
-});
+// app.use(function(req, res, next){
+//     global.con = mysql.createConnection({
+//       host: 'localhost',
+//       user: 'root',
+//       password: 'root',
+//     });
+//     con.connect();
+//     next();    
+// });
 
 // mongoose.Promise = global.Promise;
 // mongoose.connect(config.DB).then(
