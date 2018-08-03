@@ -2,6 +2,7 @@ const express = require('express');
 const crypto = require('crypto');
 const app = express();
 const UserRoute = express.Router();
+const { EXISTED_CODE, SUCCESS_CODE } = require('../helper/ResponseCode');
 
 // Require Post model in our routes module
 let User = require('../models/User');
@@ -24,7 +25,9 @@ UserRoute.route('/add').post(async function (req, res) {
 	}
 
 	let userFind = await User.where({email: email}).fetch();
-	return res.status(200).json(userFind);
+	if (userFind) {
+		return res.status(200).json({"message": "User existed", 'code': EXISTED_CODE, "data": userFind});
+	}
 
 	let user = new User({
 		name,
@@ -34,10 +37,10 @@ UserRoute.route('/add').post(async function (req, res) {
 	});
 	user.save()
 	.then(user => {
-		res.status(200).json(user);
+		res.status(200).json({"message": "Create user successfully", "code": SUCCESS_CODE,"data": user});
 	})
 	.catch(err => {
-		res.status(400).send('Unable to create user');
+		res.status(400).send({"message": 'Unable to create user', "code": EXISTED_CODE, 'data': ''});
 	})
 });
 
