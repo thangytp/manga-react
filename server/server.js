@@ -2,7 +2,7 @@ const express = require('express'),
 path = require('path'),
 bodyParser = require('body-parser'),
 cors = require('cors'),
-config = require('./config/DB'),
+// config = require('./config/DB'),
 mysql = require('mysql');
 
 const app = express();
@@ -23,13 +23,13 @@ const app = express();
 //   err => { console.log('Can not connect to the database'+ err)}
 // );
 
-const postroutes = require('./routes/PostRoute');
+const routes = require('./routes/Route');
 
 app.use(bodyParser.json());
 app.use(cors());
 const port = process.env.PORT || 4000;
 
-app.use('/posts', postroutes);
+app.use('/api/v1', routes);
 
 const server = app.listen(port, function(){
  console.log('Listening on port ' + port);

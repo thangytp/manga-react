@@ -4,7 +4,8 @@ exports.up = function(knex, Promise) {
   		t.increments('id').primary();
         t.string('name').notNullable();
         t.string('email', 100).unique();
-        t.string('password').notNullable();
+        t.string('salt').notNullable();
+        t.string('encrypted_password').notNullable();
         t.timestamps();
         t.timestamp('deleted_at').nullable();
   	})
