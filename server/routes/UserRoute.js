@@ -3,12 +3,13 @@ const crypto = require('crypto');
 const app = express();
 const UserRoute = express.Router();
 const { EXISTED_CODE, SUCCESS_CODE } = require('../helper/ResponseCode');
+const ResponseTemplate = require('../helper/ResponseTemplate');
 
 // Require Post model in our routes module
 let User = require('../models/User');
 
 UserRoute.route('/test').get(function (req, res) {
-	res.status(400).send('fail');
+	res.status(400).send(ResponseTemplate.success({"message": "Ngon", "data": "[]"}));
 });
 
 UserRoute.route('/add').post(async function (req, res) {
