@@ -4,13 +4,12 @@ const app = express();
 const UserRoute = express.Router();
 const { EXISTED_CODE, SUCCESS_CODE } = require('../helper/ResponseCode');
 const ResponseTemplate = require('../helper/ResponseTemplate');
+const user = require('../controller/v1/user');
 
 // Require Post model in our routes module
 let User = require('../models/User');
 
-UserRoute.route('/test').get(function (req, res) {
-	res.status(400).send(ResponseTemplate.success({"message": "Ngon", "data": "[]"}));
-});
+UserRoute.get('/test', user.test);
 
 UserRoute.route('/add').post(async function (req, res) {
 	console.log(`Add new user ${req.body.name}`);
