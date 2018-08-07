@@ -3,9 +3,11 @@
 module.exports = {
     client: 'mysql',
     connection: {
-      host     : 'docker.local',
+      // host     : 'docker.local',
+      host     : 'localhost',
       user     : 'root',
-      password : 'root',
+      password : '',
+      // password : 'root',
       database : 'manga',
       charset  : 'utf8'
     },

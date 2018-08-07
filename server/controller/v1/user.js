@@ -9,7 +9,8 @@ class UserController {
 		res.status(200).send('yyyyy');
 	}
 	async test(req, res) {
-		res.status(200).send(ResponseTemplate.success({"message": "767676", "data": "[]"}));
+		console.log('test here');
+		res.status(200).send(ResponseTemplate.success({"message": "vbvbvbvfhgf", "data": "[]"}));
 	}
 	async create(req, res) {
 		console.log(`Add new user ${req.body.name}`);
@@ -35,11 +36,12 @@ class UserController {
 			salt,
 			encrypted_password: hash
 		});
-		user.save()
+		await user.save()
 		.then(user => {
 			res.status(200).json({"message": "Create user successfully", "code": SUCCESS_CODE,"data": user});
 		})
 		.catch(err => {
+			console.log(err);
 			res.status(400).send({"message": 'Unable to create user', "code": EXISTED_CODE, 'data': ''});
 		});
 	}
