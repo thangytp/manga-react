@@ -27,10 +27,11 @@ const routes = require('./routes/Route');
 
 app.use(bodyParser.json());
 app.use(cors());
-const port = process.env.PORT || 4000;
+// const port = process.env.PORT || 4000;
+const port = 4000;
 
 app.use('/api/v1', routes);
 
-const server = app.listen(port, function(){
+app.listen(port, function(){
  console.log('Listening on port ' + port);
 });
