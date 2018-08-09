@@ -10,7 +10,7 @@ class UserController {
 	}
 	async test(req, res) {
 		console.log('test here');
-		res.status(200).send(ResponseTemplate.success({"message": "vbvbvbvfhgf", "data": "[]"}));
+		res.status(200).send(ResponseTemplate.success({"message": "Test controller", "data": "[]"}));
 	}
 	async create(req, res) {
 		console.log(`Add new user ${req.body.name}`);
