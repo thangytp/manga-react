@@ -4,6 +4,7 @@ const UserRoute = express.Router();
 const userController = require('../controller/v1/user');
 
 // Require Post model in our routes module
+UserRoute.get('/', userController.list);
 
 UserRoute.get('/test', userController.test);
 

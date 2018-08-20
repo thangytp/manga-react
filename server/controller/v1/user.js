@@ -6,7 +6,22 @@ const User = require('../../models/User');
 
 class UserController {
 	async list(req, res) {
-		res.status(200).send('yyyyy');
+		try {
+			let page = req.page || 0;
+			let perpage = req.perpage || 50;
+
+			let listUser = await User.fetchPage({
+				pageSize: perpage,
+				page: page,
+			});
+			console.log(listUser);
+			return res.status(200).send(ResponseTemplate.success({
+				"message" : "Success get list user!",
+				"data" : listUser
+			}));
+		} catch (e) {
+			console.log(e);
+		}
 	}
 	async test(req, res) {
 		console.log('test here');

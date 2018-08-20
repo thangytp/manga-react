@@ -13,7 +13,10 @@ class MangaController {
 				page: page,
 			});
 			console.log(listManga);
-			return listManga;
+			return res.status(200).send(ResponseTemplate.success({
+				"message" : "Success get list manga!",
+				"data" : listManga
+			}));
 		} catch (e) {
 			console.log(e);
 		}
