@@ -77,7 +77,23 @@ class MangaController {
 	}
 
 	async delete(req, res) {
+		let manga = await Manga.where().fetch();
+		if (!manga) {
 
+		}
+
+		await manga.destroy()
+		.then(result => {
+			return res.status(200).send(ResponseTemplate.success({
+				'message': 'Success',
+				'code': SUCCESS_CODE,
+				'data': {}
+			}));
+		})
+		.catch(err => {
+			console.log(err);
+			res.status(400).send({"message": 'Unable to delete manga', "code": EXISTED_CODE, 'data': ''});
+		});
 	}
 }
 
