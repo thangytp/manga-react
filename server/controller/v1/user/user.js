@@ -1,8 +1,8 @@
 const crypto = require('crypto');
-const { EXISTED_CODE, SUCCESS_CODE } = require('../../helper/ResponseCode');
-const ResponseTemplate = require('../../helper/ResponseTemplate');
+const { EXISTED_CODE, SUCCESS_CODE } = require('../../../helper/ResponseCode');
+const ResponseTemplate = require('../../../helper/ResponseTemplate');
 // Require Post model in our routes module
-const User = require('../../models/User');
+const User = require('../../../models/User');
 
 class UserController {
 	async list(req, res) {

@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const UserRoute = express.Router();
-const userController = require('../controller/v1/user');
+const userController = require('../../controller/v1');
 
 // Require Post model in our routes module
 UserRoute.get('/', userController.list);
